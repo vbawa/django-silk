@@ -99,28 +99,30 @@
             </div>
 
         </div>
+        {% if traceback %}
         <div id="traceback">
             <div class="heading">
                 <div class="inner-heading">
                     Traceback
                 </div>
             </div>
-            <div class="description">
-                The below is the Python stacktrace that leads up the execution of the above SQL query.
-                Use it to figure out where and why this SQL query is being executed and whether or not
-                it's actually neccessary.
-            </div>
-            {% for ln in traceback %}
-                {% if ln %}
-                    <div class="file-path">
-                        {{ ln }}
-                    </div>
-                    {% if forloop.counter == pos %}
-                        {% code code actual_line %}
+                <div class="description">
+                    The below is the Python stacktrace that leads up the execution of the above SQL query.
+                    Use it to figure out where and why this SQL query is being executed and whether or not
+                    it's actually neccessary.
+                </div>
+                {% for ln in traceback %}
+                    {% if ln %}
+                        <div class="file-path">
+                            {{ ln }}
+                        </div>
+                        {% if forloop.counter == pos %}
+                            {% code code actual_line %}
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-            {% endfor %}
+                {% endfor %}
         </div>
+        {% endif %}
     </div>
 
 

@@ -47,7 +47,7 @@ class SQLDetailView(View):
         str, files = self._urlify(tb)
         if file_path and file_path not in files:
             raise PermissionDenied
-        tb = [mark_safe(x) for x in str.split('\n')]
+        tb = [mark_safe(x) for x in str.split('\n')] if tb else []
         context = {
             'sql_query': sql_query,
             'traceback': tb,
